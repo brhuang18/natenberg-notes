@@ -15,6 +15,9 @@ $$\text{formula}$$
 ## Worked example
 Numbers worked through step by step.
 
+## Concepts explained in detail
+- [[concepts/concept-template|link to concept note]]
+
 ## Maths I needed to recall
 - [[00-maths-refresher/README|link to refresher note]]
 
