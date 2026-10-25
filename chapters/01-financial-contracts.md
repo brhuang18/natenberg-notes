@@ -17,8 +17,8 @@ Natenberg builds up from the simplest deal to options using one story (Jerry, Fa
 - **Long / short** - after an opening trade you are *long* (bought first) or *short* (sold first). Long usually costs money (debit), short usually receives money (credit).
 - **Contract position vs market position** - for derivatives these can differ. Someone *long a put* has bought a contract, but wants the market to *fall*. Natenberg uses "long/short contract position" for what you traded and "long/short market position" for which way you want the market to move.
 - **Notional value** - the value of the goods a forward/futures contract covers. No cash changes hands at the start, so this is a measure of size, not a price paid.
-- **Stock-type vs futures-type settlement** - see [[concepts/settlement-margin-and-variation]].
-- **Clearinghouse** - see [[concepts/clearinghouse-and-counterparty-risk]].
+- **Stock-type vs futures-type settlement** - see [[concepts/01-financial-contracts/settlement-margin-and-variation]].
+- **Clearinghouse** - see [[concepts/01-financial-contracts/clearinghouse-and-counterparty-risk]].
 
 ## Formulas
 
@@ -68,12 +68,12 @@ Check against the trades themselves: sold 9 at 75. Bought 2 at 74 (+\$2,000), 4 
 Margin required each day is \$3,000 times the contracts still open (\$27,000, \$27,000, \$21,000, \$9,000, then 0).
 
 ## Open interest, clearing and who guarantees what
-Exchange-traded contracts break the buyer-seller link: the exchange becomes the seller to every buyer and the buyer to every seller. Details in [[concepts/clearinghouse-and-counterparty-risk]].
+Exchange-traded contracts break the buyer-seller link: the exchange becomes the seller to every buyer and the buyer to every seller. Details in [[concepts/01-financial-contracts/clearinghouse-and-counterparty-risk]].
 
 ## Concepts explained in detail
-- [[concepts/forwards-futures-and-options]]
-- [[concepts/settlement-margin-and-variation]]
-- [[concepts/clearinghouse-and-counterparty-risk]]
+- [[concepts/01-financial-contracts/forwards-futures-and-options]]
+- [[concepts/01-financial-contracts/settlement-margin-and-variation]]
+- [[concepts/01-financial-contracts/clearinghouse-and-counterparty-risk]]
 
 ## Maths I needed to recall
 - Only arithmetic and signs (a negative number of contracts means short). No refresher needed yet.
@@ -82,5 +82,5 @@ Exchange-traded contracts break the buyer-seller link: the exchange becomes the 
 - None yet. A small notebook that tracks margin, variation and P&L day by day would be a good exercise.
 
 ## Open questions
-- [ ] Why should the forward price include interest and carrying costs? (Natenberg covers this in Chapter 2, Forward Pricing.)
+- [x] Why should the forward price include interest and carrying costs? Answered in [[chapters/02-forward-pricing]]: buying now means paying early and owning early, and the forward price must make the two routes equal.
 - [ ] How are options priced from probabilities? (The chapter only hints: Chapter 5.)

@@ -46,4 +46,4 @@ Even if the two exactly offset, you can face a cash shortfall and be forced to c
 
 ## Related
 - Chapter: [[chapters/01-financial-contracts]]
-- See also: [[concepts/clearinghouse-and-counterparty-risk]], [[glossary]]
+- See also: [[concepts/01-financial-contracts/clearinghouse-and-counterparty-risk]], [[glossary]]

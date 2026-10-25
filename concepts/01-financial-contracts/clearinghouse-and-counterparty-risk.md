@@ -22,4 +22,4 @@ Individual traders and clearing firms occasionally fail, but a clearinghouse has
 
 ## Related
 - Chapter: [[chapters/01-financial-contracts]]
-- See also: [[concepts/settlement-margin-and-variation]]
+- See also: [[concepts/01-financial-contracts/settlement-margin-and-variation]]

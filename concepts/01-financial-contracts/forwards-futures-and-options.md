@@ -38,7 +38,7 @@ Insurers price policies by estimating probabilities (house fire, car accident). 
 
 ## Common confusions
 - *Buying a put* means you are **long the contract** but **short the market** (you gain when prices fall).
-- A forward and a futures contract are the same agreement. The difference is who guarantees it and how the money moves ([[settlement-margin-and-variation]]).
+- A forward and a futures contract are the same agreement. The difference is who guarantees it and how the money moves ([[concepts/01-financial-contracts/settlement-margin-and-variation]]).
 - No money changes hands when a forward or futures contract is opened, but an **option premium is paid up front**.
 
 ## Related
