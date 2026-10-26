@@ -1,0 +1,72 @@
+# Builds the notes into a website with Quartz (https://quartz.jzhao.xyz) and
+# publishes it to GitHub Pages every time you push to main.
+name: Publish notes site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # lets you also run it by hand from the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out your notes
+        uses: actions/checkout@v4
+        with:
+          path: notes
+
+      - name: Check out Quartz
+        uses: actions/checkout@v4
+        with:
+          repository: jackyzha0/quartz
+          ref: v4
+          path: quartz
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Copy notes into Quartz
+        run: |
+          cd quartz
+          rm -rf content
+          mkdir content
+          rsync -a \
+            --exclude='.git' --exclude='.github' --exclude='.obsidian' \
+            --exclude='code' --exclude='anki' \
+            ../notes/ content/
+          # Quartz uses index.md as the home page
+          cp content/README.md content/index.md
+          sed -i 's|pageTitle: "Quartz 4"|pageTitle: "Natenberg Notes"|' quartz.config.ts
+          sed -i 's|baseUrl: "quartz.jzhao.xyz"|baseUrl: "brhuang18.github.io/natenberg-notes"|' quartz.config.ts
+          grep -nE 'pageTitle|baseUrl' quartz.config.ts
+
+      - name: Build site
+        run: |
+          cd quartz
+          npm ci
+          npx quartz build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: quartz/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
