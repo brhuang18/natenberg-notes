@@ -47,6 +47,10 @@ jobs:
             ../notes/ content/
           # Quartz uses index.md as the home page
           cp content/README.md content/index.md
+          # Quartz mis-resolves image links that start with ../ on pages two folders
+          # deep (concepts/NN-name/). Rewrite them as images/... for the website only;
+          # your original notes (and Obsidian) keep the ../../images/ form.
+          find content -name '*.md' -exec sed -i -E 's#\]\((\.\./)+images/#](images/#g' {} +
           sed -i 's|pageTitle: "Quartz 4"|pageTitle: "Natenberg Notes"|' quartz.config.ts
           sed -i 's|baseUrl: "quartz.jzhao.xyz"|baseUrl: "brhuang18.github.io/natenberg-notes"|' quartz.config.ts
           grep -nE 'pageTitle|baseUrl' quartz.config.ts
