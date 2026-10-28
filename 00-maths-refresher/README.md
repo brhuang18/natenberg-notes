@@ -17,6 +17,7 @@ Short notes on maths needed for the book. Write each once, then link to it from 
 | [[00-maths-refresher/normal-distribution-and-z-scores]] | Chapter 6: the bell curve, z-scores, the 68-95-99.7 rule |
 | [[00-maths-refresher/exponentials-and-natural-logs]] | Chapter 6: $e^x$, $\ln x$, continuous compounding, log returns |
 | [[00-maths-refresher/derivatives-and-rates-of-change]] | Chapter 7: slope of a curve, second derivative (gamma), partial derivatives, estimating changes |
+| [[00-maths-refresher/signs-and-running-totals]] | Chapter 8: plus and minus for buy/sell, long/short, cash in/out; total delta; running totals |
 
 ## Planned topics
 The cumulative normal function $N(x)$ when the Black-Scholes formula is covered.

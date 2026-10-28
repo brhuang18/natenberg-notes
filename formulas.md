@@ -356,3 +356,56 @@ $$\Theta + r\,S\,\Delta + \tfrac12\,\sigma^2 S^2\,\Gamma = r\,V$$
 
 - Intuition: time decay mostly pays for curvature. See [[concepts/07-risk-measurement-i/gamma-and-theta-trade-off]].
 
+## Chapter 8: Dynamic Hedging
+
+**Total delta position and the adjustment** (whole-number deltas; $+$ long or bought, $-$ short or sold)
+
+$$\text{total delta} = \sum (\text{quantity} \times \Delta) \qquad \text{contracts to sell} = \frac{\text{total delta}}{100}$$
+
+- Symbols: quantity in contracts; the underlying has $\Delta = 100$; a negative result means buy.
+- Intuition: the trade has the opposite sign of the imbalance. Example: 100 calls at delta 54 and 50 short: $5{,}400 - 5{,}000 = +400$, sell 4. See [[concepts/08-dynamic-hedging/delta-neutral-adjustments]].
+
+**Interest on a cash flow** (simple interest)
+
+$$\text{interest} = \text{cash} \times r \times \frac{\text{days left}}{365}$$
+
+- Symbols: $r$ annual rate as a decimal; cash $+$ received, $-$ paid; days left to expiration.
+- Intuition: credits earn, debits cost. Example: $+398.00 \times 0.06 \times 63/365 = +4.12$. See [[concepts/08-dynamic-hedging/hedge-pnl-components-and-discounting]].
+
+**Total hedge result, discounted**
+
+$$\text{P\&L today} = \frac{\text{original hedge} + \text{adjustments} + \text{carry} + \text{interest items}}{1 + r \times \frac{\text{days}}{365}}$$
+
+- Example: $-422.50 + 467.55 - 5.75 + 56.21 - 5.27 = 90.24$, then $90.24 / (1 + 0.06 \times 70/365) = 89.21$.
+
+**Predicted P&L of the hedge**
+
+$$\text{predicted} = \text{options} \times (\text{theoretical value} - \text{price paid}) \quad (\text{reverse the sign if sold})$$
+
+- Example: $100 \times (5.89 - 5.00) = +89.00$; sold puts: $100 \times (1.70 - 1.46) = +24.00$. See [[concepts/08-dynamic-hedging/stock-option-hedge-walkthrough]].
+
+**Variation on a futures position**
+
+$$\text{variation} = \text{number short} \times (\text{old price} - \text{new price})$$
+
+- Intuition: a short position gains when the price falls. Example: $42 \times (60.83 - 62.78) = -81.90$. See [[concepts/08-dynamic-hedging/futures-option-hedge-and-variation]].
+
+**Unhedged amount** (our link to Chapter 7; not printed in this chapter)
+
+$$\text{unhedged amount} \approx \tfrac12\,\Gamma\,(\Delta S)^2 \qquad \text{hedged P\&L per interval} \approx \tfrac12\,\Gamma\,(\Delta S)^2 + \Theta \times \text{days}$$
+
+- Symbols: $\Gamma$ gamma (decimal, per point), $\Delta S$ the price move, $\Theta$ theta per day (negative for a long option); interest ignored.
+- Intuition: curvature pays for movement, theta charges for waiting. Example: $\tfrac12 \times 0.0248 \times 1.80^2 = 0.040$. See [[concepts/08-dynamic-hedging/gamma-and-the-unhedged-amount]].
+
+**Breakeven volatility of the hedge**
+
+$$\sigma_{\text{breakeven}} = \text{implied volatility of the option at the price paid}$$
+
+- Intuition: realized volatility above it: profit; below it: loss. Example: the 5.00 call has implied volatility 32.40%. See [[concepts/08-dynamic-hedging/realized-volatility-and-the-race]].
+
+**Replication principle**
+
+$$\text{theoretical value} = \text{present value of the sum of the dynamic hedge's cash flows}$$
+
+- Example: $89.21 + 500.00 = 589.21 \approx 100 \times 5.89$. See [[concepts/08-dynamic-hedging/option-replication-and-the-hedging-principle]].
+

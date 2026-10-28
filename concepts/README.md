@@ -83,3 +83,17 @@ Chapter note: [[chapters/07-risk-measurement-i|Chapter 7: Risk Measurement I]]
 - [[concepts/07-risk-measurement-i/reading-a-position-risk-table|Reading a position's risk table (Figures 7-13 and 7-14)]]
 - [[concepts/07-risk-measurement-i/gamma-and-theta-trade-off|Gamma and theta: you cannot have both]]
 - [[concepts/07-risk-measurement-i/breakeven-volatility-of-a-position|Breakeven volatility: the implied volatility of a position]]
+
+## Chapter 8: Dynamic Hedging
+Chapter note: [[chapters/08-dynamic-hedging|Chapter 8: Dynamic Hedging]]
+
+- [[concepts/08-dynamic-hedging/series-of-bets-and-dynamic-hedging|Series of bets and dynamic hedging]]
+- [[concepts/08-dynamic-hedging/delta-neutral-adjustments|Delta-neutral adjustments: how the hedge is rebalanced]]
+- [[concepts/08-dynamic-hedging/stock-option-hedge-walkthrough|The stock-option hedge, step by step (Figure 8-1)]]
+- [[concepts/08-dynamic-hedging/hedge-pnl-components-and-discounting|The five P&L components and discounting (Figure 8-2)]]
+- [[concepts/08-dynamic-hedging/gamma-and-the-unhedged-amount|Gamma and the unhedged amount (Figure 8-3)]]
+- [[concepts/08-dynamic-hedging/rehedging-frequency-and-costs|Rehedging frequency, costs and the frictionless market]]
+- [[concepts/08-dynamic-hedging/realized-volatility-and-the-race|Realized volatility and the race]]
+- [[concepts/08-dynamic-hedging/implied-volatility-moves-and-holding-the-hedge|Implied volatility moves: closing early or holding the hedge]]
+- [[concepts/08-dynamic-hedging/futures-option-hedge-and-variation|The futures-option hedge: selling an overpriced put (Figures 8-4 and 8-5)]]
+- [[concepts/08-dynamic-hedging/option-replication-and-the-hedging-principle|Option replication: the principle behind the hedge]]

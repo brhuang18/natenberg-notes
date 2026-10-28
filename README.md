@@ -15,6 +15,7 @@ Open this folder as a vault in Obsidian. Formulas use LaTeX: `$...$` inline, `$$
 | 5 - Theoretical Pricing Models | [[chapters/05-theoretical-pricing-models]] | Draft |
 | 6 - Volatility | [[chapters/06-volatility]] | Draft |
 | 7 - Risk Measurement I | [[chapters/07-risk-measurement-i]] | Draft |
+| 8 - Dynamic Hedging | [[chapters/08-dynamic-hedging]] | Draft |
 | (add rows as chapters are written) | | |
 
 ## Reference
