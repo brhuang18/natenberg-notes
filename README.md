@@ -16,6 +16,7 @@ Open this folder as a vault in Obsidian. Formulas use LaTeX: `$...$` inline, `$$
 | 6 - Volatility | [[chapters/06-volatility]] | Draft |
 | 7 - Risk Measurement I | [[chapters/07-risk-measurement-i]] | Draft |
 | 8 - Dynamic Hedging | [[chapters/08-dynamic-hedging]] | Draft |
+| 9 - Risk Measurement II | [[chapters/09-risk-measurement-ii]] | Draft |
 | (add rows as chapters are written) | | |
 
 ## Reference

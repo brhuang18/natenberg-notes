@@ -18,6 +18,8 @@ Short notes on maths needed for the book. Write each once, then link to it from 
 | [[00-maths-refresher/exponentials-and-natural-logs]] | Chapter 6: $e^x$, $\ln x$, continuous compounding, log returns |
 | [[00-maths-refresher/derivatives-and-rates-of-change]] | Chapter 7: slope of a curve, second derivative (gamma), partial derivatives, estimating changes |
 | [[00-maths-refresher/signs-and-running-totals]] | Chapter 8: plus and minus for buy/sell, long/short, cash in/out; total delta; running totals |
+| [[00-maths-refresher/sensitivity-of-a-sensitivity]] | Chapter 9: first, second and third-order sensitivities, mixed derivatives, why vanna has two readings |
+| [[00-maths-refresher/proportionality-and-percentage-change]] | Chapter 9: proportional vs inversely proportional, points vs percent, elasticity (lambda) |
 
 ## Planned topics
 The cumulative normal function $N(x)$ when the Black-Scholes formula is covered.

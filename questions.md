@@ -21,7 +21,7 @@ Things not yet understood. Move an item to the relevant chapter note once resolv
 - [ ] Where do the formulas for delta, gamma, theta, vega and rho come from? ([[chapters/07-risk-measurement-i]]; later chapters and the Black-Scholes formula)
 - [ ] Why is delta only approximately the probability of finishing in the money, and which Black-Scholes number is the exact probability? ([[chapters/07-risk-measurement-i]])
 - [ ] How are gamma and theta linked mathematically? ([[concepts/07-risk-measurement-i/gamma-and-theta-trade-off]])
-- [ ] How do the risk measures change as conditions change? ([[chapters/07-risk-measurement-i]], Chapter 9)
+- [x] How do the risk measures change as conditions change? Resolved: delta moves toward 50 with more time or volatility; gamma, theta and vega are biggest at the money, and at-the-money gamma rises as time passes; the changes have names (vanna, charm, volga, vega decay, speed, color, zomma). [[chapters/09-risk-measurement-ii]]
 - [x] How are the risk measures used to keep a hedge neutral? Resolved: recompute the total delta each week and trade the underlying to bring it to zero. [[chapters/08-dynamic-hedging]]
 - [ ] As an individual hedging with long stock only, can I ignore the short-stock effect on option values? ([[concepts/07-risk-measurement-i/long-vs-short-stock-and-option-values]])
 - [ ] Why does the sum of the unhedged amounts equal the option's value in the limit of continuous rehedging? ([[chapters/08-dynamic-hedging]]; Black-Scholes, Chapters 18-19)
@@ -29,4 +29,8 @@ Things not yet understood. Move an item to the relevant chapter note once resolv
 - [ ] How do real traders choose a rehedging interval or delta band given costs and risk limits? ([[chapters/08-dynamic-hedging]])
 - [ ] What goes wrong when volatility is not constant or price jumps stop the hedge being adjusted in time? ([[chapters/08-dynamic-hedging]]; Chapter 23)
 - [ ] How does the stock hedge work with dividends and hard-to-borrow stock on the short-stock leg? ([[chapters/08-dynamic-hedging]]; Chapters 2 and 7)
+- [ ] Why do volatility and time enter an option's value only through $\sigma\sqrt{t}$ in the model, and where does that stop being true? ([[chapters/09-risk-measurement-ii]]; Chapters 18-19)
+- [ ] Where do the formulas for vanna, charm, volga, speed, color and zomma come from? ([[chapters/09-risk-measurement-ii]]; the book cites Haug)
+- [ ] How do traders limit the risk of short-dated, at-the-money, short-gamma positions in practice? ([[chapters/09-risk-measurement-ii]]; Chapter 21)
+- [ ] How are vanna and volga used when a volatility skew is traded? ([[chapters/09-risk-measurement-ii]]; later chapters)
 - [ ] (add)

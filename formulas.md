@@ -409,3 +409,72 @@ $$\text{theoretical value} = \text{present value of the sum of the dynamic hedge
 
 - Example: $89.21 + 500.00 = 589.21 \approx 100 \times 5.89$. See [[concepts/08-dynamic-hedging/option-replication-and-the-hedging-principle]].
 
+
+## Chapter 9: Risk Measurement II
+
+**Theta of an at-the-money option**
+
+$$TV_{t-1} = TV_t \times \sqrt{\frac{t-1}{t}} \qquad \Theta = TV_t \times \left(1 - \sqrt{\frac{t-1}{t}}\right)$$
+
+- Symbols: $TV_t$ theoretical value with $t$ days to expiration; $\Theta$ value lost in one day.
+- Intuition: at the money, value is proportional to volatility, and volatility to $\sqrt{t}$. Example: $2.50 \times (1 - \sqrt{29/30}) \approx 0.042$. A shortcut for large $t$: $\Theta \approx TV_t/(2t)$ (ours). See [[concepts/09-risk-measurement-ii/estimating-atm-theta-with-the-square-root-of-time]].
+
+**Approximate gamma from two deltas**
+
+$$\Gamma \approx \frac{\Delta_2 - \Delta_1}{S_2 - S_1}$$
+
+- Symbols: $\Delta_1, \Delta_2$ whole-number deltas at underlying prices $S_1, S_2$.
+- Intuition: deltas gained per point. Example: $(75 - 25)/(102.50 - 97.50) = 10$ and $(55 - 45)/5 = 2$. See [[concepts/09-risk-measurement-ii/gamma-in-different-conditions]].
+
+**Lambda (elasticity, leverage)**
+
+$$\Lambda = \Delta \times \frac{S}{TV}$$
+
+- Symbols: $\Delta$ delta as a decimal; $S$ underlying price; $TV$ option theoretical value. Positive for calls, negative for puts.
+- Intuition: percent change in the option per 1% change in the underlying. Example: $0.20 \times 100/4.00 = 5$. See [[concepts/09-risk-measurement-ii/lambda-leverage]].
+
+**Position delta after an implied-volatility move**
+
+$$\text{position delta} = (\text{options} \times \Delta_{\text{new}}) - (\text{contracts sold} \times 100)$$
+
+- Intuition: the hedge is fixed while the implied delta moves. Example: $40 \times 30 - 10 \times 100 = +200$ (book); with a model delta of 28.1, about $+123$. See [[concepts/09-risk-measurement-ii/delta-changes-with-volatility-and-time]].
+
+**At-the-money scaling with the exercise price $K$**
+
+$$\Theta \propto K \qquad \text{vega} \propto K \qquad \Gamma \propto \frac{1}{K}$$
+
+- Intuition: models work in percentages. Example: strike 100 vs 50: vega ratio $0.1988/0.0994 = 2$, gamma ratio $3.19/6.38 = 1/2$. See [[concepts/09-risk-measurement-ii/at-the-money-scaling-with-the-exercise-price]].
+
+**Volatility and time enter through one product** (no interest)
+
+$$\text{value depends on } \sigma\sqrt{t}$$
+
+- Intuition: 25% for 91 days and 50% for 22.75 days both give $\sigma\sqrt{t} = 0.1248$ and the same option value. See [[concepts/09-risk-measurement-ii/time-and-volatility-have-similar-effects]].
+
+**The higher-order measures** (the "sensitivity of a sensitivity")
+
+| Name | What changes | When | Derivative of the value $V$ |
+|---|---|---|---|
+| Gamma | delta | underlying moves | $\partial^2 V/\partial S^2$ |
+| Vanna | delta (or vega) | volatility (or underlying) moves | $\partial^2 V/\partial S\,\partial\sigma$ |
+| Charm | delta | time passes | $\partial^2 V/\partial S\,\partial t$ |
+| Volga (vomma) | vega | volatility moves | $\partial^2 V/\partial\sigma^2$ |
+| Vega decay | vega | time passes | $\partial^2 V/\partial\sigma\,\partial t$ |
+| Speed | gamma | underlying moves | $\partial^3 V/\partial S^3$ |
+| Color | gamma | time passes | $\partial^3 V/\partial S^2\,\partial t$ |
+| Zomma | gamma | volatility moves | $\partial^3 V/\partial S^2\,\partial\sigma$ |
+
+- Symbols: $S$ underlying price, $\sigma$ volatility, $t$ time; $\partial$ means "change in one input, others held fixed". The book's $t$ is time *to* expiration; we quote the time measures per day passing (opposite sign). See [[concepts/09-risk-measurement-ii/higher-order-sensitivities-and-their-names]] and [[concepts/09-risk-measurement-ii/summary-tables-where-each-measure-is-largest]].
+
+**First-order updates of delta and gamma** (our link; small moves only)
+
+$$\Delta_{\text{new}} \approx \Delta + \Delta S\,\Gamma + \Delta\sigma\,\text{vanna} + d\,\text{charm} \qquad \Gamma_{\text{new}} \approx \Gamma + \Delta S\,\text{speed} + \Delta\sigma\,\text{zomma} + d\,\text{color}$$
+
+- Symbols: $\Delta S$ points, $\Delta\sigma$ volatility points, $d$ days passing.
+- Example: the 110 call (91 days, volatility 25%): $24.16 + 1 \times 2.50 + 2 \times 1.03 + 1 \times (-0.14) = 28.58$ against 28.45 from the model. See [[concepts/09-risk-measurement-ii/higher-order-sensitivities-and-their-names]].
+
+**Vega with the volga correction** (our extension)
+
+$$\text{change in value} \approx \text{vega} \times \Delta\sigma + \tfrac12\,\text{volga}\,(\Delta\sigma)^2$$
+
+- Example: 110 call, volatility $+5$: $0.779 + 0.045 = 0.824$ against 0.818 from the model. See [[concepts/09-risk-measurement-ii/volga-and-vega-decay]].
