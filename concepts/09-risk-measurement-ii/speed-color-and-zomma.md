@@ -10,6 +10,8 @@ Gamma is the engine of an option position's *speed* risk, and these three tell y
 
 Where they are about zero, gamma is steady: "the gamma values of such options will be relatively insensitive".
 
+For the full explanation with graphs, see [[concepts/09-risk-measurement-ii/gamma-as-a-bell-curve]] (gamma squeezed and stretched) and [[concepts/09-risk-measurement-ii/color-and-zomma-in-detail]] (color and zomma as slopes).
+
 ## The maths
 $$\text{speed} = \frac{\text{change in gamma}}{\text{1 point in the underlying}} \quad \text{color} = \frac{\text{change in gamma}}{\text{1 day passing}} \quad \text{zomma} = \frac{\text{change in gamma}}{\text{1 volatility point}}$$
 
@@ -54,4 +56,5 @@ At the money (underlying 100, strike 100, volatility 25%):
 - Maths needed: [[00-maths-refresher/sensitivity-of-a-sensitivity]]
 - Previous: [[concepts/09-risk-measurement-ii/gamma-in-different-conditions]]
 - Next: [[concepts/09-risk-measurement-ii/short-dated-at-the-money-options-the-riskiest]]
+- In detail, with graphs: [[concepts/09-risk-measurement-ii/gamma-as-a-bell-curve]], [[concepts/09-risk-measurement-ii/color-and-zomma-in-detail]]
 - See also: [[concepts/09-risk-measurement-ii/summary-tables-where-each-measure-is-largest]], [[glossary]], [[formulas]]

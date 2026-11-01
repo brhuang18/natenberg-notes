@@ -13,8 +13,11 @@ The numbers from Chapter 7 (delta, gamma, theta, vega) describe an option **toda
 - **At-the-money scaling** - theta and vega are proportional to the exercise price, gamma is inversely proportional. [[concepts/09-risk-measurement-ii/at-the-money-scaling-with-the-exercise-price]]
 - **Vega** - largest at the money; flat against volatility at the money, rising with volatility in and out of the money; falls as expiration nears. [[concepts/09-risk-measurement-ii/vega-in-different-conditions]]
 - **Volga (vomma) and vega decay** - the curvature of value against volatility, and the shrinking of vega as days pass. [[concepts/09-risk-measurement-ii/volga-and-vega-decay]]
+- **How the vanna, charm, volga and vega decay graphs are made** - the nudge-and-subtract recipe, and how to read sign and size. [[concepts/09-risk-measurement-ii/how-the-higher-order-graphs-are-made]]
 - **Gamma** - largest at the money; at the money it rises as time passes or volatility falls. [[concepts/09-risk-measurement-ii/gamma-in-different-conditions]]
 - **Speed, color and zomma** - how gamma changes with the underlying, with time and with volatility. [[concepts/09-risk-measurement-ii/speed-color-and-zomma]]
+- **Gamma as a bell curve** - gamma against the underlying is a bell of fixed area; time and volatility squeeze or stretch it. [[concepts/09-risk-measurement-ii/gamma-as-a-bell-curve]]
+- **Color and zomma in detail** - what happens to the bell's height at your spot when it is squeezed or stretched. [[concepts/09-risk-measurement-ii/color-and-zomma-in-detail]]
 - **The riskiest options** - at the money, close to expiration, low volatility. [[concepts/09-risk-measurement-ii/short-dated-at-the-money-options-the-riskiest]]
 - **Lambda** - percentage change in the option per 1% change in the underlying: $\Lambda = \Delta \times S/TV$. [[concepts/09-risk-measurement-ii/lambda-leverage]]
 - **The summary tables** - Figures 9-25 and 9-26: where each measure is maximised. [[concepts/09-risk-measurement-ii/summary-tables-where-each-measure-is-largest]]
@@ -83,25 +86,59 @@ The book's Figures 9-1 to 9-24 are sketches without numbers; ours are drawn from
 
 ![Theta](../images/ch09-theta-profiles.png)
 
+**Value against time** (supports the theta estimate on page 145): an at-the-money option's value follows $\sqrt{t}$, so each day removes a bigger share as expiration nears.
+
+![Square root of time](../images/ch09-sqrt-of-time.png)
+
 **Vega** (Figures 9-12 to 9-14 and 9-16): a hump at the money; flat against volatility at the money; falls with time.
 
 ![Vega](../images/ch09-vega-profiles.png)
+
+**Option value against volatility** (Figure 9-13, and why volga is positive): a straight line at the money, curving upward in and out of the money.
+
+![Value against volatility](../images/ch09-value-vs-volatility.png)
 
 **Volga and vega decay** (Figures 9-15 and 9-17):
 
 ![Volga and vega decay](../images/ch09-volga-and-vega-decay.png)
 
+**The two parts of vega decay:** fewer days left, and drifting away from the money.
+
+![Two reasons vega decays](../images/ch09-vega-decay-two-reasons.png)
+
 **Gamma** (Figures 9-18 and 9-20) and **at-the-money scaling** (right panel):
 
 ![Gamma](../images/ch09-gamma-profiles.png)
+
+**Gamma is a bell** (delta is the S-curve, gamma its slope; the area under the bell is always 100):
+
+![Delta and the gamma bell](../images/ch09-gamma-bell-curve.png)
 
 **Speed, color and zomma** (Figures 9-19, 9-21 and 9-22):
 
 ![Speed, color and zomma](../images/ch09-speed-color-zomma.png)
 
+**Squeezing the gamma bell:** where gamma rises, where it falls, and the pivots where color and zomma are zero.
+
+![Squeezing the gamma bell](../images/ch09-gamma-squeeze-zones.png)
+
+**Color and zomma as slopes** (gamma at four fixed prices, against time and against volatility):
+
+![Color and zomma as slopes](../images/ch09-color-zomma-slopes.png)
+
 **Lambda** (Figures 9-23 and 9-24): largest for out-of-the-money options; falls with volatility.
 
 ![Lambda](../images/ch09-lambda.png)
+
+## Where I got stuck (and where the answer is)
+- **Why is vanna "less" at both higher and lower volatility?** It is not: the size is smaller at higher volatility on both sides, because size is the distance from the zero line. [[concepts/09-risk-measurement-ii/vanna-and-charm]]
+- **What do larger and smaller, positive and negative vanna mean?** Sign is the direction delta moves, size is how far; worked numbers in [[concepts/09-risk-measurement-ii/how-the-higher-order-graphs-are-made]].
+- **Why is an at-the-money option's value proportional to $\sqrt{t}$?** Random steps partly cancel, so typical distance grows like a square root, and the option is worth about that distance. [[concepts/09-risk-measurement-ii/estimating-atm-theta-with-the-square-root-of-time]]
+- **In Figure 9-16 the at-the-money line looks steeper than the in- and out-of-the-money lines near expiration.** Correct in absolute terms; the others lose a bigger *share* but have little left. [[concepts/09-risk-measurement-ii/vega-in-different-conditions]]
+- **How is the volga graph made, and what is volga intuitively?** Nudge volatility one point, subtract the vegas; it is gamma for volatility (convexity). [[concepts/09-risk-measurement-ii/volga-and-vega-decay]]
+- **How is the vega decay graph made, and why that shape?** Move one day on and subtract the vegas; two parts, fewer days plus drifting from the money. [[concepts/09-risk-measurement-ii/volga-and-vega-decay]]
+- **Why does gamma rise at the money but fall away from the money as time passes?** Gamma is a bell of fixed area; squeezing it makes it taller in the middle and thinner at the sides. [[concepts/09-risk-measurement-ii/gamma-as-a-bell-curve]]
+- **What are color and zomma, intuitively?** The change in the bell's height at your spot when it is squeezed (time passes) or stretched (volatility rises); positive/negative near the money, opposite in the tails, zero at the pivots. [[concepts/09-risk-measurement-ii/color-and-zomma-in-detail]]
 
 ## Concepts explained in detail
 - [[concepts/09-risk-measurement-ii/higher-order-sensitivities-and-their-names]]
@@ -113,8 +150,11 @@ The book's Figures 9-1 to 9-24 are sketches without numbers; ours are drawn from
 - [[concepts/09-risk-measurement-ii/at-the-money-scaling-with-the-exercise-price]]
 - [[concepts/09-risk-measurement-ii/vega-in-different-conditions]]
 - [[concepts/09-risk-measurement-ii/volga-and-vega-decay]]
+- [[concepts/09-risk-measurement-ii/how-the-higher-order-graphs-are-made]]
 - [[concepts/09-risk-measurement-ii/gamma-in-different-conditions]]
+- [[concepts/09-risk-measurement-ii/gamma-as-a-bell-curve]]
 - [[concepts/09-risk-measurement-ii/speed-color-and-zomma]]
+- [[concepts/09-risk-measurement-ii/color-and-zomma-in-detail]]
 - [[concepts/09-risk-measurement-ii/short-dated-at-the-money-options-the-riskiest]]
 - [[concepts/09-risk-measurement-ii/lambda-leverage]]
 - [[concepts/09-risk-measurement-ii/summary-tables-where-each-measure-is-largest]]
@@ -127,7 +167,7 @@ The book's Figures 9-1 to 9-24 are sketches without numbers; ours are drawn from
 - [[00-maths-refresher/signs-and-running-totals]] - total delta position of a hedged book
 
 ## Code
-- [[code/risk_measures_ii.ipynb]] - rechecks the chapter's four numeric examples; builds the delta, gamma, vega, theta, vanna, charm, volga, vega decay, speed, color, zomma and lambda functions from the Black-Scholes model (no interest); redraws the chapter's graphs from numbers; checks the book's statements about where each measure peaks. Draws all eight figures in these notes.
+- [[code/risk_measures_ii.ipynb]] - rechecks the chapter's four numeric examples; builds the delta, gamma, vega, theta, vanna, charm, volga, vega decay, speed, color, zomma and lambda functions from the Black-Scholes model (no interest); redraws the chapter's graphs from numbers; checks the book's statements about where each measure peaks. Draws all fourteen figures in these notes, and has the step-by-step "nudge and subtract" recipe for the vanna, charm, volga and vega decay graphs.
 
 ## Notes on the book's text
 We found a few slips and sign-convention points while recomputing. None changes the ideas.
@@ -135,7 +175,7 @@ We found a few slips and sign-convention points while recomputing. None changes 
 - **Page 145:** after the at-the-money theta estimate the text says the theta "will also become increasingly large (Figure 9-7)". Figure 9-7 is the charm; the figure about theta over time is 9-10. [[concepts/09-risk-measurement-ii/estimating-atm-theta-with-the-square-root-of-time]]
 - **Page 154, lambda example:** "the new delta of the option ... should be approximately 4.20". It means the new *value*: the delta is 0.20 and the value rises from 4.00 to about 4.20. [[concepts/09-risk-measurement-ii/lambda-leverage]]
 - **Page 147, volga:** "either volatility gamma or volatility gamma" repeats the same phrase; the meaning is "volatility gamma" (the curvature with respect to volatility). [[concepts/09-risk-measurement-ii/volga-and-vega-decay]]
-- **Sign of time-based measures:** the formulas in Figure 9-26 differentiate with respect to time *to* expiration (so, for example, at-the-money color is negative: gamma is smaller with more time). We report charm, vega decay and color as the change **per day passing**, which is the opposite sign. [[concepts/09-risk-measurement-ii/speed-color-and-zomma]]
+- **Sign of time-based measures:** the formulas in Figure 9-26 differentiate with respect to time *to* expiration (so, for example, at-the-money color is negative: gamma is smaller with more time). We report charm, vega decay and color as the change **per day passing**, which is the opposite sign. So the book's Figure 9-7 (a positive charm hump at call delta 20) is our charm graph upside down. [[concepts/09-risk-measurement-ii/speed-color-and-zomma]] and [[concepts/09-risk-measurement-ii/how-the-higher-order-graphs-are-made]]
 - **Implied delta example:** the jump from 25 to 30 is a round number. A model gives about 28, a smaller (but same-direction) change. [[concepts/09-risk-measurement-ii/delta-changes-with-volatility-and-time]]
 - **Where peaks sit:** the text says vanna and charm peak near deltas 20 and 80 and speed near 15 and 85; Figure 9-26 says "15-20, 80-85" for all three; and the vega-decay table entry (20 and 80) is narrower than the text ("between 10 and 90"). Our model: about 17/86, 17/86, 14/83 and 16/84, consistent with all.
 - **Lambda and volatility:** "lambda values for both calls and puts fall" when volatility rises. For puts the values are negative, so "fall" has to mean shrink in size (our figure).

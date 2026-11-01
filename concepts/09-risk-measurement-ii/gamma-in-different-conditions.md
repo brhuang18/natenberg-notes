@@ -7,6 +7,8 @@ Gamma says how fast delta changes. The key idea: **delta changes fastest where t
 - **Lots of time or high volatility:** even an at-the-money option's delta stays near 50 (a wide range of outcomes is possible). Small moves hardly change delta, so gamma is low.
 - **Little time or low volatility:** the market will probably end very close to where it is. Whether the strike gets crossed is decided by a small move, so delta swings quickly from near 0 to near 100 across the strike: gamma is high.
 
+**One picture for this whole section:** gamma against the underlying price is a bell curve whose area is always 100, and time and volatility just squeeze or stretch it ([[concepts/09-risk-measurement-ii/gamma-as-a-bell-curve]]). Most of the results below are that picture seen from different spots.
+
 *"Gamma, theta and vega are greatest when an option is at the money."* That is why at-the-money options are the most actively traded in most markets: they offer the characteristics traders come for.
 
 ## The maths and the patterns
@@ -63,6 +65,7 @@ At the money, 100 underlying, volatility 25%. Moving from 91 days to 30 days to 
 ## Related
 - Chapter: [[chapters/09-risk-measurement-ii]]
 - Previous: [[concepts/09-risk-measurement-ii/volga-and-vega-decay]]
+- The bell-curve picture: [[concepts/09-risk-measurement-ii/gamma-as-a-bell-curve]]
 - Next: [[concepts/09-risk-measurement-ii/speed-color-and-zomma]]
 - Built on: [[concepts/07-risk-measurement-i/gamma]], [[concepts/08-dynamic-hedging/gamma-and-the-unhedged-amount]]
 - See also: [[concepts/09-risk-measurement-ii/short-dated-at-the-money-options-the-riskiest]], [[glossary]], [[formulas]]

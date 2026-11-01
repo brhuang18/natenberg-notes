@@ -11,7 +11,7 @@ Vega says "how much is this option worth if implied volatility rises one point?"
 ## The maths and the three patterns
 ![Vega against underlying price, volatility and time](../../images/ch09-vega-profiles.png)
 
-**1. Against the underlying price (Figure 9-12).** A hump centred on the exercise price; the higher the exercise price the bigger the hump. At the money, vega is proportional to the exercise price: a 100 option has twice the vega of a 50 option ([[concepts/09-risk-measurement-ii/at-the-money-scaling-with-the-exercise-price]]). (The slope of this hump, how vega changes as the underlying moves, is the **vanna**: the same number as the delta's sensitivity to volatility, [[concepts/09-risk-measurement-ii/vanna-and-charm]].)
+**1. Against the underlying price (Figure 9-12).** A hump centred on the exercise price; the higher the exercise price the bigger the hump. At the money, vega is proportional to the exercise price: a 100 option has twice the vega of a 50 option ([[concepts/09-risk-measurement-ii/at-the-money-scaling-with-the-exercise-price]]). (The slope of this hump, how vega changes as the underlying moves, is the **vanna**: the same number as the delta's sensitivity to volatility, [[concepts/09-risk-measurement-ii/vanna-and-charm]]. Why the signs agree: for a 20-delta call (underlying below the strike), a rise in the underlying moves the option toward the money, where vega is largest, so vega rises; for an 80-delta call a rise takes it deeper into the money, so vega falls. Those are the same signs as the delta reading: more volatility lifts a 20-delta call's delta and lowers an 80-delta call's.)
 
 **2. Against volatility (Figures 9-13 and 9-14).** Underlying 100, 91 days, vega per volatility point:
 
@@ -40,6 +40,18 @@ Vega says "how much is this option worth if implied volatility rises one point?"
 
 Vega rises with more time and falls as time passes. At the money it behaves like $\sqrt{t}$: one year left gives 0.396, three months 0.199, about half (since $\sqrt{4} = 2$).
 
+**Reading Figure 9-16 carefully.** In the last days the at-the-money line is the steepest one in *absolute* terms: it follows the square-root curve, which drops fastest near zero. The in- and out-of-the-money lines are lower and run out of vega well before expiration (the 110 call above has 0.012 left with 14 days to go and 0.001 with 7), so they flatten near zero and have little left to lose. What is bigger for them is the **share** of their own vega lost each day (volatility 25%):
+
+| Days left | 100 call: vega lost in a day (share of its vega) | 110 call: vega lost in a day (share of its vega) |
+|---|---|---|
+| 60 | 0.0013 (0.8%) | 0.0017 (1.6%) |
+| 30 | 0.0019 (1.7%) | 0.0023 (4.6%) |
+| 10 | 0.0034 (5.1%) | 0.0014 (29%) |
+| 5 | 0.0049 (11%) | 0.0002 (76%) |
+| 2 | 0.0086 (29%) | 0.0000 (100%) |
+
+Far from expiration the out-of-the-money option loses a little more vega per day than the at-the-money one; in the last few weeks the order flips, and the at-the-money option loses far more.
+
 ## Worked example
 You are long 100 at-the-money calls on the 100 underlying with a year left (vega 0.396 each), and want to know what happens if you hold them to three months left with nothing else changing: each option's vega falls to 0.199, so the position vega drops from $100 \times 0.396 = 39.6$ to $19.9$. **The volatility risk of a long option position halves as the option ages**, even though you did nothing. If you wanted to keep 39.6 of vega you would have to roll into longer-dated options.
 
@@ -47,6 +59,7 @@ You are long 100 at-the-money calls on the 100 underlying with a year left (vega
 - **Vega is not the same as theta shape.** Both are humps against the underlying price, but against volatility theta is linear (at the money) while vega is flat; against time theta *rises* toward expiration (at the money) while vega *falls*.
 - **Out-of-the-money options are not "low volatility risk".** In a high-volatility market their vega is close to the at-the-money option's (110 call at 60%: 0.196 vs 0.197).
 - **Vega is per volatility *point*,** not per percent of itself ([[00-maths-refresher/proportionality-and-percentage-change]]).
+- **"Which line falls faster in Figure 9-16?" depends on how you measure.** In absolute terms the at-the-money vega falls fastest near expiration; as a share of what it has left, the in- and out-of-the-money options fall faster (the table above).
 
 ## Related
 - Chapter: [[chapters/09-risk-measurement-ii]]

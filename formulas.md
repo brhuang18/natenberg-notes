@@ -417,7 +417,7 @@ $$\text{theoretical value} = \text{present value of the sum of the dynamic hedge
 $$TV_{t-1} = TV_t \times \sqrt{\frac{t-1}{t}} \qquad \Theta = TV_t \times \left(1 - \sqrt{\frac{t-1}{t}}\right)$$
 
 - Symbols: $TV_t$ theoretical value with $t$ days to expiration; $\Theta$ value lost in one day.
-- Intuition: at the money, value is proportional to volatility, and volatility to $\sqrt{t}$. Example: $2.50 \times (1 - \sqrt{29/30}) \approx 0.042$. A shortcut for large $t$: $\Theta \approx TV_t/(2t)$ (ours). See [[concepts/09-risk-measurement-ii/estimating-atm-theta-with-the-square-root-of-time]].
+- Intuition: at the money, value is proportional to volatility, and volatility to $\sqrt{t}$. Example: $2.50 \times (1 - \sqrt{29/30}) \approx 0.042$. A shortcut for large $t$: $\Theta \approx TV_t/(2t)$ (ours; good with many days left, poor in the last few). Why a square root: random steps partly cancel, so the typical price distance grows like $\sqrt{t}$, and an at-the-money option is worth about that distance. See [[concepts/09-risk-measurement-ii/estimating-atm-theta-with-the-square-root-of-time]].
 
 **Approximate gamma from two deltas**
 
@@ -477,4 +477,13 @@ $$\Delta_{\text{new}} \approx \Delta + \Delta S\,\Gamma + \Delta\sigma\,\text{va
 
 $$\text{change in value} \approx \text{vega} \times \Delta\sigma + \tfrac12\,\text{volga}\,(\Delta\sigma)^2$$
 
+- Intuition: option value is a curve (not a line) against volatility, so a straight-line vega estimate is too low for a rise and too high for a fall; the volga term fixes it.
 - Example: 110 call, volatility $+5$: $0.779 + 0.045 = 0.824$ against 0.818 from the model. See [[concepts/09-risk-measurement-ii/volga-and-vega-decay]].
+
+**Color and zomma are twins** (our check; model with no interest or dividends)
+
+$$\text{color (per day passing)} \approx -\frac{\sigma}{7.3\,t} \times \text{zomma (per volatility point)}$$
+
+- Symbols: $\sigma$ volatility as a decimal, $t$ years left; $7.3 = 2 \times 365 \div 100$.
+- Intuition: only $\sigma\sqrt{t}$ matters, so time passing acts like volatility falling.
+- Example: at the money, 91 days, $\sigma = 0.25$: $-0.25/(7.3 \times 0.249) = -0.137$ against the model's $0.0177/(-0.1281) = -0.138$. See [[concepts/09-risk-measurement-ii/color-and-zomma-in-detail]].
