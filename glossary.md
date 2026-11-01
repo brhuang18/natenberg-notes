@@ -176,3 +176,40 @@ One line per term, in your own words. Link to the chapter where it is explained.
 - **At-the-money scaling** - theta and vega are proportional to the exercise price; gamma is inversely proportional. [[concepts/09-risk-measurement-ii/at-the-money-scaling-with-the-exercise-price]]
 - **Gamma options** - the book's name for at-the-money options close to expiration in a low-volatility market: delta starts near 50 but can swing toward 0 or 100 on a small move. [[concepts/09-risk-measurement-ii/short-dated-at-the-money-options-the-riskiest]]
 - **Lambda ($\Lambda$, omega $\Omega$; elasticity; leverage)** - percentage change in an option's value per 1% change in the underlying: $\Delta \times S/TV$. [[concepts/09-risk-measurement-ii/lambda-leverage]]
+
+<!-- Chapter 10 -->
+- **Spread** - a strategy of opposing positions in different but related instruments; it profits when the values of the legs change at different rates. [[concepts/10-introduction-to-spreading/what-is-a-spread]]
+- **Leg** - one position within a spread; a spread has two or more legs.
+- **Buy / sell the spread** - buy the side worth more and sell the other (e.g. buy the products, sell crude, for the crack spread); sell is the reverse.
+- **Scalping** - quoting a bid and an offer around an equilibrium price and trading often for a tiny profit without holding a position; needs a very liquid market.
+- **Intramarket spread** - all legs on the same underlying (cash vs forward, one month vs another). [[concepts/10-introduction-to-spreading/cash-and-carry-and-calendar-spreads]]
+- **Intermarket spread** - legs in different markets whose prices are related (gold vs silver, S&P 500 vs Dow). [[concepts/10-introduction-to-spreading/intermarket-and-ratio-spreads]]
+- **Calendar spread (futures)** - buy one maturity, sell another; trades the gap between months, which should equal the cost of carry between them.
+- **Ratio strategy / ratio spread** - buying and selling unequal numbers of contracts, e.g. 3 of A against 1 of B, to match a price relationship.
+- **NOB spread (notes over bonds)** - a Treasury note future against a Treasury bond future; trades the yield curve.
+- **Yield curve** - the relationship between short-term and long-term interest rates.
+- **Crack spread** - crude oil against gasoline and heating oil, commonly 3:2:1; reflects refining cost and demand. The **crush spread** is the soybean equivalent.
+- **Leg risk (execution risk)** - the risk of holding a naked position because only some legs of a spread were filled; do the hardest leg first. [[concepts/10-introduction-to-spreading/executing-a-spread]]
+- **Gamma spread / vega spread / rho spread** - spreads built to be exposed to realized volatility, implied volatility or interest rates rather than direction. [[concepts/10-introduction-to-spreading/option-spreads-delta-gamma-vega-rho]]
+- **Dynamic vs static spread** - one that needs periodic adjustments vs one set up once and carried to expiration.
+- **Mispricing in volatility terms** - how many volatility points an option's implied volatility is above or below your estimate; the common yardstick across strikes and expirations. [[concepts/10-introduction-to-spreading/mispricing-in-volatility-terms]]
+- **Margin for error** - how far your volatility estimate can be wrong before the position stops making money (breakeven volatility minus your estimate). [[concepts/10-introduction-to-spreading/margin-for-error-and-trade-size]]
+- **Betting limit** - a cap on the size of one bet, so one lucky bettor cannot overwhelm the casino; the casino's version of limiting risk. [[concepts/10-introduction-to-spreading/casino-spreading-and-short-term-bad-luck]]
+- **Volatility spread** - a roughly delta-neutral position whose delta is cancelled with other options; still sensitive to movement, implied volatility and time. [[concepts/11-volatility-spreads/hedging-with-other-options]]
+- **Straddle** - a call and a put with the same strike and expiration, both bought (long) or both sold (short). [[concepts/11-volatility-spreads/straddles-and-strangles]]
+- **Ratio straddle** - a straddle with unequal numbers of calls and puts to make it delta neutral (e.g. 1 call to 3 puts).
+- **Strangle** - a call and a put with the same expiration but different strikes (normally both out of the money). A strangle made of in-the-money options is a **guts**.
+- **Butterfly** - three equally spaced strikes in the ratio 1 x 2 x 1: wings (outside) and body (inside); long = buy the wings; value at expiration is between 0 and the strike gap. [[concepts/11-volatility-spreads/butterflies-and-condors]]
+- **Condor** - four strikes in the ratio 1 x 1 x 1 x 1 with equal gaps between the two lowest and two highest strikes; a strangle with limited risk or reward.
+- **Wingspread** - a butterfly or condor.
+- **Ratio spread** - unequal numbers of same-type options at two strikes, same expiration, usually delta neutral; **buying more** than selling is a **backspread**, selling more a **frontspread**. [[concepts/11-volatility-spreads/ratio-spreads-building-and-payoff]]
+- **Backspread / frontspread** - older names for a ratio spread that buys more than it sells / sells more than it buys.
+- **Christmas tree (ladder)** - one option at one strike against one each at two other strikes (all same type and expiration); like a strangle with one side limited. [[concepts/11-volatility-spreads/christmas-trees-and-ladders]]
+- **Calendar spread (time / horizontal spread)** - same type and strike, different expirations; long = far option bought, near option sold (a debit). [[concepts/11-volatility-spreads/calendar-spreads-time-decay]]
+- **Time butterfly (time fly)** - same strike, three expirations; long = buy the middle expiration (body), sell the nearer and farther (wings), a debit. [[concepts/11-volatility-spreads/time-butterflies]]
+- **Diagonal spread** - a calendar spread with different strikes; behaves like a calendar if 1:1, same type and about the same delta. [[concepts/11-volatility-spreads/diagonal-spreads]]
+- **Long / short a spread** - long = executed at a cash debit, short = at a cash credit.
+- **Long premium / short premium** - positive gamma (helped by movement, pays time decay) / negative gamma (helped by calm, collects time decay). [[concepts/11-volatility-spreads/long-short-premium-and-the-four-categories]]
+- **Dividend risk** - the sensitivity of a spread to a change in expected dividends; a call calendar has negative dividend risk, a put calendar positive. [[concepts/11-volatility-spreads/calendar-spreads-interest-rates-and-dividends]]
+- **Short squeeze (calendar spread)** - when stock cannot be borrowed, the holder of a call calendar may be forced to exercise the long-term call and lose its time value.
+- **Spread order** - a spread traded as one order at one price, with a single bid and ask for the whole package. [[concepts/11-volatility-spreads/submitting-a-spread-order]]

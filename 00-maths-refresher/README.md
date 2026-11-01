@@ -20,6 +20,7 @@ Short notes on maths needed for the book. Write each once, then link to it from 
 | [[00-maths-refresher/signs-and-running-totals]] | Chapter 8: plus and minus for buy/sell, long/short, cash in/out; total delta; running totals |
 | [[00-maths-refresher/sensitivity-of-a-sensitivity]] | Chapter 9: first, second and third-order sensitivities, mixed derivatives, why vanna has two readings |
 | [[00-maths-refresher/proportionality-and-percentage-change]] | Chapter 9: proportional vs inversely proportional, points vs percent, elasticity (lambda) |
+| [[00-maths-refresher/ratios-and-32nds]] | Chapter 10: ratios like 3:1, prices quoted in 32nds, a spread price as a signed sum |
 
 ## Planned topics
 The cumulative normal function $N(x)$ when the Black-Scholes formula is covered.

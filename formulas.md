@@ -487,3 +487,130 @@ $$\text{color (per day passing)} \approx -\frac{\sigma}{7.3\,t} \times \text{zom
 - Symbols: $\sigma$ volatility as a decimal, $t$ years left; $7.3 = 2 \times 365 \div 100$.
 - Intuition: only $\sigma\sqrt{t}$ matters, so time passing acts like volatility falling.
 - Example: at the money, 91 days, $\sigma = 0.25$: $-0.25/(7.3 \times 0.249) = -0.137$ against the model's $0.0177/(-0.1281) = -0.138$. See [[concepts/09-risk-measurement-ii/color-and-zomma-in-detail]].
+
+
+## Chapter 10: Introduction to Spreading
+
+**Price of a spread** (use $+$ for a leg bought, $-$ for a leg sold)
+
+$$\text{spread price} = A - B - C \qquad \text{(buy } A\text{, sell } B \text{ and } C\text{)}$$
+
+- Symbols: $A$, $B$, $C$ are the prices of the legs, each multiplied by the number of contracts if the numbers are unequal.
+- Intuition: only the total matters; any leg prices that add up give the same spread.
+- Example: $129 - 47 - 68 = 131 - 48 - 69 = 200 - 86 - 100 = 14$. See [[concepts/10-introduction-to-spreading/executing-a-spread]].
+
+**Market for a spread from the leg quotes**
+
+$$\text{spread bid} = A_{\text{bid}} - B_{\text{ask}} - C_{\text{ask}} \qquad \text{spread ask} = A_{\text{ask}} - B_{\text{bid}} - C_{\text{bid}}$$
+
+- Intuition: each leg is crossed the bad way, so the spread's market is as wide as the legs' widths added together; a market maker quoting the whole spread usually offers a tighter market.
+- Example: $128 - 49 - 70 = 9$ and $131 - 47 - 68 = 16$; the whole spread might be quoted 11/14. See [[concepts/10-introduction-to-spreading/executing-a-spread]].
+
+**Four-month forward with compounded borrowing** (the cash-and-carry example, 6% a year, 5 a month storage)
+
+$$F_4 = S + \text{interest}_{1\text{-}2} + \text{interest}_{3\text{-}4} + \text{storage}, \qquad \text{interest}_{3\text{-}4} = F_2 \times 0.06 \times \tfrac{2}{12}$$
+
+- Symbols: $S$ cash price, $F_2$ the two-month forward price (the amount we owe after two months).
+- Example: $700 + 7.00 + 7.17 + 20 = 734.17$, so the fair spread is $734.17 - 717 = 17.17$. See [[concepts/10-introduction-to-spreading/cash-and-carry-and-calendar-spreads]].
+
+**Profit of a ratio spread** (buy 3 A, sell 1 B, opened at 120 and 390)
+
+$$\text{P\&L} = \text{starting gap} - \text{current gap} = 30 - (B - 3A)$$
+
+- Symbols: the gap is $B - 3A$, which is $390 - 360 = 30$ at the start.
+- Intuition: you earn as B comes back down toward $3A$; if the gap widens you lose.
+- Example: $A = 50$, $B = 150$: gap 0, profit 30; $A = 120$, $B = 420$: gap 60, profit $-30$. See [[concepts/10-introduction-to-spreading/intermarket-and-ratio-spreads]].
+
+**3:2:1 crack spread**
+
+$$\text{crack} = 2 \times \text{gasoline} + 1 \times \text{heating oil} - 3 \times \text{crude}$$
+
+- Intuition: the value of the products you make minus the cost of the crude you use; widens with refining costs or product demand.
+- Example (ours, same units): $2 \times 90 + 95 - 3 \times 80 = 35$. See [[concepts/10-introduction-to-spreading/intermarket-and-ratio-spreads]].
+
+**Mispricing in volatility terms and the approximate vega** (our reading)
+
+$$\text{mispricing} = \sigma_{\text{implied}} - \sigma_{\text{theoretical}} \qquad \frac{\text{price gap}}{\text{volatility gap}} \approx \text{average vega}$$
+
+- Example: options at 7.00 (price 8.00, implied 26%) and 6.00 (price 6.75, implied 28%), theoretical volatility 23%: gaps of 3 and 5 points; the second is the bigger mispricing. See [[concepts/10-introduction-to-spreading/mispricing-in-volatility-terms]].
+
+**Total theoretical edge and margin for error**
+
+$$\text{total edge} = n \times (\text{theoretical value} - \text{price}) \qquad \text{margin for error} = \sigma_{\text{breakeven}} - \sigma_{\text{estimate}}$$
+
+- Symbols: $n$ number of options (sign flipped when selling), $\sigma$ in volatility points.
+- Example: sold at 4.00, worth 3.50 at 35%: $400 \times 0.50 = 200$; breakeven 40% gives a margin of 5 points. See [[concepts/10-introduction-to-spreading/margin-for-error-and-trade-size]].
+
+**Roulette: edge and expected profit** (38 numbers, pays 35 to 1)
+
+$$\text{edge} = 1 - \frac{36}{38} = \frac{2}{38} \approx 5.26\% \qquad E[\text{profit}] = \text{edge} \times \text{total bet}$$
+
+- Intuition: the edge is a property of each 1 bet, so it does not change when the same money is spread over more numbers; only the variation changes.
+- Example: 2,000 bet in one bet or two: $2{,}000 \times 2/38 = 105.26$ both ways. See [[concepts/10-introduction-to-spreading/casino-spreading-and-short-term-bad-luck]].
+
+## Chapter 11: Volatility Spreads
+
+**Delta-neutral ratio**
+
+$$\text{ratio} = \frac{\Delta_{\text{sold}}}{\Delta_{\text{bought}}}$$
+
+- Symbols: $\Delta$ is the delta of each option; the option bought is the one farther out of the money.
+- Intuition: an option with a quarter of the delta needs four times as many to cancel one nearer-the-money option.
+- Example: sell one 95 call (delta 75), buy 105 calls (delta 25): $75/25 = 3$. See [[concepts/11-volatility-spreads/ratio-spreads-building-and-payoff]].
+
+**Call ratio spread payoff at expiration** (buy $n$ calls at $K_2$, sell 1 call at $K_1$, $K_1 < K_2$, net credit $c$)
+
+$$\text{P\&L}(S) = c - \max(S - K_1, 0) + n \max(S - K_2, 0)$$
+
+$$\text{max loss} = (K_2 - K_1) - c \qquad \text{upper breakeven} = \frac{nK_2 - K_1 - c}{n - 1}$$
+
+- Symbols: $S$ underlying at expiration; $c$ credit received.
+- Intuition: flat at $+c$ below $K_1$; slope $-1$ between the strikes; slope $-1 + n$ above $K_2$. Worst point is $K_2$.
+- Example: $n = 3$, $K_1 = 95$, $K_2 = 105$, $c = 3$: max loss $10 - 3 = 7$; breakevens 98 and $(315 - 95 - 3)/2 = 108.5$. See [[concepts/11-volatility-spreads/ratio-spreads-building-and-payoff]].
+
+**Butterfly and condor maximum value at expiration**
+
+$$\text{butterfly: } 0 \le V \le K_2 - K_1 \qquad \text{condor: } 0 \le V \le K_2 - K_1 \;(\text{gap between the two lower strikes})$$
+
+- Intuition: the value can never be negative, so the position always costs a debit; the maximum is the gap between strikes.
+- Example: 90/100/110 call butterfly worth 10 at 100. See [[concepts/11-volatility-spreads/butterflies-and-condors]].
+
+**Total Greeks and cash flow of a spread**
+
+$$\text{Greek}_{\text{total}} = \sum_i q_i \times \text{Greek}_i \qquad \text{cash flow} = -\sum_i q_i \times V_i$$
+
+- Symbols: $q_i$ quantity (plus bought, minus sold); $V_i$ theoretical value of option $i$. Cash flow is negative for a debit (long), positive for a credit (short).
+- Example: $+20$ April 110 calls (gamma 3.0), $-10$ April 105 calls (gamma 4.4): $20 \times 3.0 - 10 \times 4.4 = +16$. See [[concepts/11-volatility-spreads/reading-the-spread-tables]].
+
+**At-the-money scaling with time** (explains the calendar spread)
+
+$$\gamma \propto \frac{1}{\sqrt{T}} \qquad \theta \propto -\frac{1}{\sqrt{T}} \qquad \text{vega} \propto \sqrt{T} \qquad V_{\text{ATM}} \approx 0.4\, S\, \sigma \sqrt{T}$$
+
+- Intuition: the far option has less gamma and theta and more vega than the near option, so a long calendar is $-$gamma, $+$theta, $+$vega.
+- Example: $S = 100$, $\sigma = 20\%$, no interest: $V \approx 2.30 \sqrt{\text{months}}$ (4 months: 4.60; 2 months: 3.25). See [[concepts/11-volatility-spreads/calendar-spreads-time-decay]].
+
+**Time butterfly cost**
+
+$$\text{cost} = 2\,V_{\text{middle}} - V_{\text{near}} - V_{\text{far}}$$
+
+- Example (ours, 3, 2 and 4 months at the money): $2 \times 3.99 - 3.26 - 4.60 = 0.12$ debit. See [[concepts/11-volatility-spreads/time-butterflies]].
+
+**Stock forward price and the calendar spread**
+
+$$F = S(1 + rt) - D$$
+
+- Intuition: the far forward moves more when $r$ or $D$ changes, so call calendars have positive rho and negative dividend risk; put calendars the opposite.
+- Example: $S = 100$, $r$ from 8% to 10%: March forward $102 \to 102.5$, June forward $104 \to 105$. See [[concepts/11-volatility-spreads/calendar-spreads-interest-rates-and-dividends]].
+
+**Change of delta from gamma**
+
+$$\Delta\text{delta} \approx \gamma \times \text{move}$$
+
+- Example: gamma $-200$, market falls 2 points: $(-200) \times (-2) = +400$ deltas. See [[concepts/11-volatility-spreads/adjusting-a-volatility-spread]].
+
+**Theoretical edge of a spread**
+
+$$\text{edge} = \sum_i q_i \times (V_i^{\text{theo}} - \text{price}_i)$$
+
+- Intuition: with prices set by a lower or higher implied volatility, positive-vega spreads have positive edge when implied volatility is low, negative-vega spreads when it is high.
+- Example: long straddle at 17% implied volatility: $+9.63$; at 23%: $-9.65$. See [[concepts/11-volatility-spreads/choosing-a-spread-by-implied-volatility]].
